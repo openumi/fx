@@ -3,7 +3,7 @@ package a
 import (
 	"fmt"
 
-	"go.uber.org/fx/fxevent"
+	"github.com/openumi/fx/fxevent"
 )
 
 // This logger intentionally doesn't handle everything. We don't expect any

@@ -27,9 +27,9 @@ package leaky_test
 import (
 	"testing"
 
+	"github.com/openumi/fx"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"go.uber.org/fx"
 )
 
 func TestRecoverFromPanicsOption(t *testing.T) {
@@ -57,7 +57,7 @@ func TestRecoverFromPanicsOption(t *testing.T) {
 			err := app.Err()
 			require.Error(t, err)
 			assert.Contains(t, err.Error(),
-				`panic: "terrible sorrow" in func: "go.uber.org/fx/internal/leaky_test_test".TestRecoverFromPanicsOption.`)
+				`panic: "terrible sorrow" in func: "github.com/openumi/fx/internal/leaky_test_test".TestRecoverFromPanicsOption.`)
 		} else {
 			assert.Panics(t, func() { fx.New(opts...) },
 				"expected panic without RecoverFromPanics() option")

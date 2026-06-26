@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"io"
 
-	"go.uber.org/fx/fxevent"
+	"github.com/openumi/fx/fxevent"
 )
 
 type valueLogger struct {

@@ -31,11 +31,11 @@ import (
 	"sync/atomic"
 	"testing"
 
+	"github.com/openumi/fx"
+	"github.com/openumi/fx/fxevent"
+	"github.com/openumi/fx/fxtest"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"go.uber.org/fx"
-	"go.uber.org/fx/fxevent"
-	"go.uber.org/fx/fxtest"
 )
 
 func TestAnnotated(t *testing.T) {
@@ -946,14 +946,14 @@ func TestAnnotatedWrongUsage(t *testing.T) {
 		require.Error(t, err)
 
 		// Example:
-		// fx.Annotated should be passed to fx.Provide directly, it should not be returned by the constructor: fx.Provide received go.uber.org/fx_test.TestAnnotatedWrongUsage.func2.1() from:
-		// go.uber.org/fx_test.TestAnnotatedWrongUsage.func2
+		// fx.Annotated should be passed to fx.Provide directly, it should not be returned by the constructor: fx.Provide received github.com/openumi/fx_test.TestAnnotatedWrongUsage.func2.1() from:
+		// github.com/openumi/fx_test.TestAnnotatedWrongUsage.func2
 		//         /.../fx/annotated_test.go:76
 		// testing.tRunner
 		//         /.../go/1.13.3/libexec/src/testing/testing.go:909
 		assert.Contains(t, err.Error(), "fx.Annotated should be passed to fx.Provide directly, it should not be returned by the constructor")
-		assert.Contains(t, err.Error(), "fx.Provide received go.uber.org/fx_test.TestAnnotatedWrongUsage")
-		assert.Contains(t, err.Error(), "go.uber.org/fx_test.TestAnnotatedWrongUsage")
+		assert.Contains(t, err.Error(), "fx.Provide received github.com/openumi/fx_test.TestAnnotatedWrongUsage")
+		assert.Contains(t, err.Error(), "github.com/openumi/fx_test.TestAnnotatedWrongUsage")
 		assert.Contains(t, err.Error(), "/annotated_test.go")
 	})
 
@@ -1020,22 +1020,22 @@ func TestAnnotatedString(t *testing.T) {
 		{
 			desc: "target",
 			give: fx.Annotated{Target: func() {}},
-			want: "fx.Annotated{Target: go.uber.org/fx_test.TestAnnotatedString.func1()}",
+			want: "fx.Annotated{Target: github.com/openumi/fx_test.TestAnnotatedString.func1()}",
 		},
 		{
 			desc: "name and target",
 			give: fx.Annotated{Name: "foo", Target: func() {}},
-			want: `fx.Annotated{Name: "foo", Target: go.uber.org/fx_test.TestAnnotatedString.func2()}`,
+			want: `fx.Annotated{Name: "foo", Target: github.com/openumi/fx_test.TestAnnotatedString.func2()}`,
 		},
 		{
 			desc: "group and target",
 			give: fx.Annotated{Group: "foo", Target: func() {}},
-			want: `fx.Annotated{Group: "foo", Target: go.uber.org/fx_test.TestAnnotatedString.func3()}`,
+			want: `fx.Annotated{Group: "foo", Target: github.com/openumi/fx_test.TestAnnotatedString.func3()}`,
 		},
 		{
 			desc: "name, group and target",
 			give: fx.Annotated{Name: "foo", Group: "bar", Target: func() {}},
-			want: `fx.Annotated{Name: "foo", Group: "bar", Target: go.uber.org/fx_test.TestAnnotatedString.func4()}`,
+			want: `fx.Annotated{Name: "foo", Group: "bar", Target: github.com/openumi/fx_test.TestAnnotatedString.func4()}`,
 		},
 	}
 
@@ -1384,7 +1384,7 @@ func TestAnnotate(t *testing.T) {
 		err := app.Err()
 		require.Error(t, err)
 		assert.Contains(t, err.Error(), "already provided")
-		assert.Contains(t, err.Error(), "go.uber.org/fx_test.TestAnnotate.func")
+		assert.Contains(t, err.Error(), "github.com/openumi/fx_test.TestAnnotate.func")
 	})
 
 	t.Run("specify more ParamTags than Params", func(t *testing.T) {
@@ -1419,7 +1419,7 @@ func TestAnnotate(t *testing.T) {
 		)
 		err := app.Err()
 		require.Error(t, err)
-		assert.Contains(t, err.Error(), "encountered error while applying annotation using fx.Annotate to go.uber.org/fx_test.TestAnnotate.func1(): cannot apply more than one line of ParamTags")
+		assert.Contains(t, err.Error(), "encountered error while applying annotation using fx.Annotate to github.com/openumi/fx_test.TestAnnotate.func1(): cannot apply more than one line of ParamTags")
 	})
 
 	t.Run("specify two ResultTags", func(t *testing.T) {
@@ -1439,7 +1439,7 @@ func TestAnnotate(t *testing.T) {
 
 		err := app.Err()
 		require.Error(t, err)
-		assert.Contains(t, err.Error(), "encountered error while applying annotation using fx.Annotate to go.uber.org/fx_test.TestAnnotate.func1(): cannot apply more than one line of ResultTags")
+		assert.Contains(t, err.Error(), "encountered error while applying annotation using fx.Annotate to github.com/openumi/fx_test.TestAnnotate.func1(): cannot apply more than one line of ResultTags")
 	})
 
 	t.Run("annotate with a non-nil error", func(t *testing.T) {
@@ -1498,7 +1498,7 @@ func TestAnnotate(t *testing.T) {
 
 		// Example:
 		// fx.Provide(fx.Annotate(42, fx.ResultTags(["name:\"buf\""])) from:
-		// go.uber.org/fx_test.TestAnnotate.func17
+		// github.com/openumi/fx_test.TestAnnotate.func17
 		//     /Users/abg/dev/fx/annotated_test.go:697
 		// testing.tRunner
 		//     /usr/local/Cellar/go/1.17.2/libexec/src/testing/testing.go:1259

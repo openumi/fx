@@ -21,7 +21,7 @@
 package fx
 
 import (
-	"go.uber.org/fx/fxevent"
+	"github.com/openumi/fx/fxevent"
 )
 
 // logBuffer will buffer all messages until a logger has been

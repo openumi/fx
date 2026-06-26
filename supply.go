@@ -25,7 +25,7 @@ import (
 	"reflect"
 	"strings"
 
-	"go.uber.org/fx/internal/fxreflect"
+	"github.com/openumi/fx/internal/fxreflect"
 )
 
 // Supply provides instantiated values for dependency injection as if

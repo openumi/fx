@@ -3,7 +3,7 @@ package a
 import (
 	"log"
 
-	"go.uber.org/fx/fxevent"
+	"github.com/openumi/fx/fxevent"
 )
 
 type ptrLogger struct{}

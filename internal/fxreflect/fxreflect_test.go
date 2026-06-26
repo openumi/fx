@@ -30,7 +30,7 @@ import (
 func TestCaller(t *testing.T) {
 	t.Parallel()
 
-	assert.Equal(t, "go.uber.org/fx/internal/fxreflect.TestCaller", Caller())
+	assert.Equal(t, "github.com/openumi/fx/internal/fxreflect.TestCaller", Caller())
 }
 
 func someFunc() {}
@@ -46,7 +46,7 @@ func TestFuncName(t *testing.T) {
 		{
 			desc: "function",
 			give: someFunc,
-			want: "go.uber.org/fx/internal/fxreflect.someFunc()",
+			want: "github.com/openumi/fx/internal/fxreflect.someFunc()",
 		},
 		{
 			desc: "not a function",
@@ -74,18 +74,18 @@ func TestSanitizeFuncNames(t *testing.T) {
 	}{
 		{
 			"url encoding",
-			"go.uber.org/fx/sample%2egit/someFunc",
-			"go.uber.org/fx/sample.git/someFunc",
+			"github.com/openumi/fx/sample%2egit/someFunc",
+			"github.com/openumi/fx/sample.git/someFunc",
 		},
 		{
 			"vendor removal",
-			"go.uber.org/fx/vendor/github.com/some/lib.SomeFunc",
+			"github.com/openumi/fx/vendor/github.com/some/lib.SomeFunc",
 			"vendor/github.com/some/lib.SomeFunc",
 		},
 		{
 			"package happens to be named vendor is untouched",
-			"go.uber.org/fx/foovendor/someFunc",
-			"go.uber.org/fx/foovendor/someFunc",
+			"github.com/openumi/fx/foovendor/someFunc",
+			"github.com/openumi/fx/foovendor/someFunc",
 		},
 	}
 	for _, c := range cases {

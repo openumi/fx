@@ -23,7 +23,7 @@ package fxlog
 import (
 	"io"
 
-	"go.uber.org/fx/fxevent"
+	"github.com/openumi/fx/fxevent"
 )
 
 // DefaultLogger constructs a Logger out of io.Writer.

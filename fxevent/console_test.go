@@ -396,8 +396,8 @@ func TestConsoleLogger(t *testing.T) {
 		},
 		{
 			name: "LoggerInitialized",
-			give: &LoggerInitialized{ConstructorName: "go.uber.org/fx/fxevent.TestConsoleLogger.func1()"},
-			want: "[Fx] LOGGER	Initialized custom logger from go.uber.org/fx/fxevent.TestConsoleLogger.func1()\n",
+			give: &LoggerInitialized{ConstructorName: "github.com/openumi/fx/fxevent.TestConsoleLogger.func1()"},
+			want: "[Fx] LOGGER	Initialized custom logger from github.com/openumi/fx/fxevent.TestConsoleLogger.func1()\n",
 		},
 	}
 

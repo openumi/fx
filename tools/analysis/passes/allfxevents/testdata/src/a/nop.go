@@ -1,6 +1,6 @@
 package a
 
-import "go.uber.org/fx/fxevent"
+import "github.com/openumi/fx/fxevent"
 
 type nopLogger struct{}
 

@@ -28,8 +28,8 @@ import (
 	"os"
 	"time"
 
-	"go.uber.org/fx"
-	"go.uber.org/fx/fxevent"
+	"github.com/openumi/fx"
+	"github.com/openumi/fx/fxevent"
 )
 
 // NewLogger constructs a logger. It's just a regular Go function, without any

@@ -38,11 +38,11 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	. "go.uber.org/fx"
-	"go.uber.org/fx/fxevent"
-	"go.uber.org/fx/fxtest"
-	"go.uber.org/fx/internal/fxclock"
-	"go.uber.org/fx/internal/fxlog"
+	. "github.com/openumi/fx"
+	"github.com/openumi/fx/fxevent"
+	"github.com/openumi/fx/fxtest"
+	"github.com/openumi/fx/internal/fxclock"
+	"github.com/openumi/fx/internal/fxlog"
 	"go.uber.org/goleak"
 	"go.uber.org/multierr"
 	"go.uber.org/zap"
@@ -269,14 +269,14 @@ func TestNewApp(t *testing.T) {
 		err := app.Err()
 		require.Error(t, err)
 
-		// fx.Annotated may specify only one of Name or Group: received fx.Annotated{Name: "foo", Group: "bar", Target: go.uber.org/fx_test.TestAnnotatedWithGroupAndName.func1()} from:
-		// go.uber.org/fx_test.TestAnnotatedWithGroupAndName
+		// fx.Annotated may specify only one of Name or Group: received fx.Annotated{Name: "foo", Group: "bar", Target: github.com/openumi/fx_test.TestAnnotatedWithGroupAndName.func1()} from:
+		// github.com/openumi/fx_test.TestAnnotatedWithGroupAndName
 		//         /.../fx/annotated_test.go:164
 		// testing.tRunner
 		//         /.../go/1.13.3/libexec/src/testing/testing.go:909
 		assert.Contains(t, err.Error(), "fx.Annotated may specify only one of Name or Group:")
-		assert.Contains(t, err.Error(), `received fx.Annotated{Name: "foo", Group: "bar", Target: go.uber.org/fx_test.TestNewApp`)
-		assert.Contains(t, err.Error(), "go.uber.org/fx_test.TestNewApp")
+		assert.Contains(t, err.Error(), `received fx.Annotated{Name: "foo", Group: "bar", Target: github.com/openumi/fx_test.TestNewApp`)
+		assert.Contains(t, err.Error(), "github.com/openumi/fx_test.TestNewApp")
 		assert.Contains(t, err.Error(), "/app_test.go")
 	})
 
@@ -293,13 +293,13 @@ func TestNewApp(t *testing.T) {
 
 		// Example:
 		// fx.Provide(fx.Annotated{...}) from:
-		//     go.uber.org/fx_test.TestNewApp.func8
+		//     github.com/openumi/fx_test.TestNewApp.func8
 		//         /.../fx/app_test.go:206
 		//     testing.tRunner
 		//         /.../go/1.13.3/libexec/src/testing/testing.go:909
 		//     Failed: must provide constructor function, got 42 (type int)
 		assert.Contains(t, err.Error(), `fx.Provide(fx.Annotated{Name: "foo", Target: 42}) from:`)
-		assert.Contains(t, err.Error(), "go.uber.org/fx_test.TestNewApp")
+		assert.Contains(t, err.Error(), "github.com/openumi/fx_test.TestNewApp")
 		assert.Contains(t, err.Error(), "/app_test.go")
 		assert.Contains(t, err.Error(), "Failed: must provide constructor function")
 	})
@@ -320,8 +320,8 @@ func TestNewApp(t *testing.T) {
 		require.Error(t, err)
 
 		// Example:
-		// fx.Provide(fx.Annotate(go.uber.org/fx_test.TestNewApp.func10.1(), fx.ResultTags(["name:\"foo\""])) from:
-		//     go.uber.org/fx_test.TestNewApp.func10
+		// fx.Provide(fx.Annotate(github.com/openumi/fx_test.TestNewApp.func10.1(), fx.ResultTags(["name:\"foo\""])) from:
+		//     github.com/openumi/fx_test.TestNewApp.func10
 		//         /.../fx/app_test.go:305
 		//     testing.tRunner
 		//         /.../src/testing/testing.go:1259
@@ -341,13 +341,13 @@ func TestNewApp(t *testing.T) {
 
 		// Example:
 		// fx.Provide(..) from:
-		//     go.uber.org/fx_test.TestNewApp.func8
+		//     github.com/openumi/fx_test.TestNewApp.func8
 		//         /.../fx/app_test.go:206
 		//     testing.tRunner
 		//         /.../go/1.13.3/libexec/src/testing/testing.go:909
 		//     Failed: must provide constructor function, got 42 (type int)
 		assert.Contains(t, err.Error(), "fx.Provide(42) from:")
-		assert.Contains(t, err.Error(), "go.uber.org/fx_test.TestNewApp")
+		assert.Contains(t, err.Error(), "github.com/openumi/fx_test.TestNewApp")
 		assert.Contains(t, err.Error(), "/app_test.go")
 		assert.Contains(t, err.Error(), "Failed: must provide constructor function")
 	})
@@ -647,7 +647,7 @@ func TestWithLoggerErrorUseDefault(t *testing.T) {
 	// Example output:
 	// [Fx] SUPPLY  *zap.Logger
 	// [Fx] ERROR   Failed to initialize custom logger: fx.WithLogger() from:
-	// go.uber.org/fx_test.TestSetupLogger.func3
+	// github.com/openumi/fx_test.TestSetupLogger.func3
 	//        /Users/abg/dev/fx/app_test.go:334
 	// testing.tRunner
 	//        /usr/local/Cellar/go/1.16.4/libexec/src/testing/testing.go:1193
@@ -783,15 +783,15 @@ func TestModuleTrace(t *testing.T) {
 
 	wantTrace, err := regexp.Compile(
 		// Provide/decorate itself, initialized via init.
-		"^go.uber.org/fx_test.init \\(.*fx/app_test.go:.*\\)\n" +
+		"^github.com/openumi/fx_test.init \\(.*fx/app_test.go:.*\\)\n" +
 			// ModuleA initialized via init.
-			"go.uber.org/fx_test.init \\(.*fx/app_test.go:.*\\) \\(ModuleA\\)\n" +
+			"github.com/openumi/fx_test.init \\(.*fx/app_test.go:.*\\) \\(ModuleA\\)\n" +
 			// ModuleB from getModuleB.
-			"go.uber.org/fx_test.getModuleB \\(.*fx/app_test.go:.*\\) \\(ModuleB\\)\n" +
+			"github.com/openumi/fx_test.getModuleB \\(.*fx/app_test.go:.*\\) \\(ModuleB\\)\n" +
 			// ModuleC above.
-			"go.uber.org/fx_test.TestModuleTrace \\(.*fx/app_test.go:.*\\) \\(ModuleC\\)\n" +
+			"github.com/openumi/fx_test.TestModuleTrace \\(.*fx/app_test.go:.*\\) \\(ModuleC\\)\n" +
 			// Top-level app & corresponding module created by NewSpied.
-			"go.uber.org/fx_test.NewSpied \\(.*fx/app_test.go:.*\\)$",
+			"github.com/openumi/fx_test.NewSpied \\(.*fx/app_test.go:.*\\)$",
 	)
 	require.NoError(t, err, "test regexp compilation error")
 
@@ -878,11 +878,11 @@ func TestRunEventEmission(t *testing.T) {
 			},
 			wantRunEvents: []fxevent.Run{
 				{
-					Name: "go.uber.org/fx_test.TestRunEventEmission.func1()",
+					Name: "github.com/openumi/fx_test.TestRunEventEmission.func1()",
 					Kind: "provide",
 				},
 				{
-					Name: "go.uber.org/fx_test.TestRunEventEmission.func2()",
+					Name: "github.com/openumi/fx_test.TestRunEventEmission.func2()",
 					Kind: "decorate",
 				},
 			},
@@ -902,7 +902,7 @@ func TestRunEventEmission(t *testing.T) {
 					Kind: "supply",
 				},
 				{
-					Name: "go.uber.org/fx_test.TestRunEventEmission.func4()",
+					Name: "github.com/openumi/fx_test.TestRunEventEmission.func4()",
 					Kind: "decorate",
 				},
 			},
@@ -932,7 +932,7 @@ func TestRunEventEmission(t *testing.T) {
 			},
 			wantRunEvents: []fxevent.Run{
 				{
-					Name: "go.uber.org/fx_test.TestRunEventEmission.func8()",
+					Name: "github.com/openumi/fx_test.TestRunEventEmission.func8()",
 					Kind: "provide",
 				},
 			},
@@ -949,7 +949,7 @@ func TestRunEventEmission(t *testing.T) {
 			},
 			wantRunEvents: []fxevent.Run{
 				{
-					Name: "go.uber.org/fx_test.TestRunEventEmission.func10()",
+					Name: "github.com/openumi/fx_test.TestRunEventEmission.func10()",
 					Kind: "provide",
 				},
 			},
@@ -971,7 +971,7 @@ func TestRunEventEmission(t *testing.T) {
 					Kind: "supply",
 				},
 				{
-					Name: "go.uber.org/fx_test.TestRunEventEmission.func12()",
+					Name: "github.com/openumi/fx_test.TestRunEventEmission.func12()",
 					Kind: "decorate",
 				},
 			},
@@ -1770,7 +1770,7 @@ func TestAppStart(t *testing.T) {
 
 		// Example
 		// fx.Invoke({}) called from:
-		// go.uber.org/fx_test.TestAppStart.func4
+		// github.com/openumi/fx_test.TestAppStart.func4
 		//         /.../fx/app_test.go:525
 		// testing.tRunner
 		//         /.../go/1.13.3/libexec/src/testing/testing.go:909
@@ -1780,7 +1780,7 @@ func TestAppStart(t *testing.T) {
 			spy.EventTypes())
 		failedEvent := spy.Events()[len(spy.EventTypes())-1].(*fxevent.Invoked)
 		assert.Contains(t, failedEvent.Err.Error(), "can't invoke non-function")
-		assert.Contains(t, failedEvent.Trace, "go.uber.org/fx_test.TestAppStart")
+		assert.Contains(t, failedEvent.Trace, "github.com/openumi/fx_test.TestAppStart")
 		assert.Contains(t, failedEvent.Trace, "/app_test.go")
 	})
 
@@ -1805,14 +1805,14 @@ func TestAppStart(t *testing.T) {
 		require.Error(t, err, "expected start failure")
 
 		// Example:
-		// fx.Option should be passed to fx.New directly, not to fx.Provide: fx.Provide received fx.Provide(go.uber.org/fx_test.TestAppStart.func5.2(), go.uber.org/fx_test.TestAppStart.func5.3()) from:
-		// go.uber.org/fx_test.TestAppStart.func5
+		// fx.Option should be passed to fx.New directly, not to fx.Provide: fx.Provide received fx.Provide(github.com/openumi/fx_test.TestAppStart.func5.2(), github.com/openumi/fx_test.TestAppStart.func5.3()) from:
+		// github.com/openumi/fx_test.TestAppStart.func5
 		//         /.../fx/app_test.go:550
 		// testing.tRunner
 		//         /.../go/1.13.3/libexec/src/testing/testing.go:909
 		assert.Contains(t, err.Error(), "fx.Option should be passed to fx.New directly, not to fx.Provide")
-		assert.Contains(t, err.Error(), "fx.Provide received fx.Provide(go.uber.org/fx_test.TestAppStart")
-		assert.Contains(t, err.Error(), "go.uber.org/fx_test.TestAppStart")
+		assert.Contains(t, err.Error(), "fx.Provide received fx.Provide(github.com/openumi/fx_test.TestAppStart")
+		assert.Contains(t, err.Error(), "github.com/openumi/fx_test.TestAppStart")
 		assert.Contains(t, err.Error(), "/app_test.go")
 	})
 
@@ -1834,14 +1834,14 @@ func TestAppStart(t *testing.T) {
 		assert.Equal(t, err, newErr, "start should return the same error fx.New encountered")
 
 		// Example
-		// fx.Option should be passed to fx.New directly, not to fx.Invoke: fx.Invoke received fx.Invoke(go.uber.org/fx_test.TestAppStart.func6.2()) from:
-		// go.uber.org/fx_test.TestAppStart.func6
+		// fx.Option should be passed to fx.New directly, not to fx.Invoke: fx.Invoke received fx.Invoke(github.com/openumi/fx_test.TestAppStart.func6.2()) from:
+		// github.com/openumi/fx_test.TestAppStart.func6
 		//         /.../fx/app_test.go:579
 		// testing.tRunner
 		//         /.../go/1.13.3/libexec/src/testing/testing.go:909
 		assert.Contains(t, err.Error(), "fx.Option should be passed to fx.New directly, not to fx.Invoke")
-		assert.Contains(t, err.Error(), "fx.Invoke received fx.Invoke(go.uber.org/fx_test.TestAppStart")
-		assert.Contains(t, err.Error(), "go.uber.org/fx_test.TestAppStart")
+		assert.Contains(t, err.Error(), "fx.Invoke received fx.Invoke(github.com/openumi/fx_test.TestAppStart")
+		assert.Contains(t, err.Error(), "github.com/openumi/fx_test.TestAppStart")
 		assert.Contains(t, err.Error(), "/app_test.go")
 	})
 
@@ -1872,14 +1872,14 @@ func TestAppStart(t *testing.T) {
 		require.Error(t, err, "expected start failure")
 
 		// Example:
-		// fx.Annotated should be passed to fx.Provide directly, it should not be returned by the constructor: fx.Provide received go.uber.org/fx_test.TestAnnotatedWrongUsage.func2.1() from:
-		// go.uber.org/fx_test.TestAnnotatedWrongUsage.func2
+		// fx.Annotated should be passed to fx.Provide directly, it should not be returned by the constructor: fx.Provide received github.com/openumi/fx_test.TestAnnotatedWrongUsage.func2.1() from:
+		// github.com/openumi/fx_test.TestAnnotatedWrongUsage.func2
 		//         /.../fx/annotated_test.go:76
 		// testing.tRunner
 		//         /.../go/1.13.3/libexec/src/testing/testing.go:909
 		assert.Contains(t, err.Error(), "fx.Option should be passed to fx.New directly, not to fx.Provide")
-		assert.Contains(t, err.Error(), "fx.Provide received fx.Options(fx.Provide(go.uber.org/fx_test.TestAppStart")
-		assert.Contains(t, err.Error(), "go.uber.org/fx_test.TestAppStart")
+		assert.Contains(t, err.Error(), "fx.Provide received fx.Options(fx.Provide(github.com/openumi/fx_test.TestAppStart")
+		assert.Contains(t, err.Error(), "github.com/openumi/fx_test.TestAppStart")
 		assert.Contains(t, err.Error(), "/app_test.go")
 	})
 
@@ -2412,7 +2412,7 @@ func TestNopLoggerOptionString(t *testing.T) {
 	t.Parallel()
 
 	assert.Equal(t,
-		"fx.WithLogger(go.uber.org/fx.init.func1())",
+		"fx.WithLogger(github.com/openumi/fx.init.func1())",
 		NopLogger.String(),
 	)
 }
@@ -2637,7 +2637,7 @@ func TestOptionString(t *testing.T) {
 			give: Invoke(func(c io.Closer) error {
 				return c.Close()
 			}),
-			want: "fx.Invoke(go.uber.org/fx_test.TestOptionString.func1())",
+			want: "fx.Invoke(github.com/openumi/fx_test.TestOptionString.func1())",
 		},
 		{
 			desc: "Error/single",
@@ -2667,7 +2667,7 @@ func TestOptionString(t *testing.T) {
 			),
 			want: "fx.Options(" +
 				"fx.Provide(bytes.NewBufferString()), " +
-				"fx.Invoke(go.uber.org/fx_test.TestOptionString.func2())" +
+				"fx.Invoke(github.com/openumi/fx_test.TestOptionString.func2())" +
 				")",
 		},
 		{
@@ -2688,7 +2688,7 @@ func TestOptionString(t *testing.T) {
 		{
 			desc: "Logger",
 			give: WithLogger(func() fxevent.Logger { return testLogger{t} }),
-			want: "fx.WithLogger(go.uber.org/fx_test.TestOptionString.func3())",
+			want: "fx.WithLogger(github.com/openumi/fx_test.TestOptionString.func3())",
 		},
 		{
 			desc: "ErrorHook",

@@ -61,4 +61,4 @@ fx-lint: $(FXLINT)
 	@$(FXLINT) ./...
 
 $(FXLINT): tools/cmd/fxlint/main.go
-	cd tools && go install go.uber.org/fx/tools/cmd/fxlint
+	cd tools && go install github.com/openumi/fx/tools/cmd/fxlint

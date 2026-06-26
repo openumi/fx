@@ -42,7 +42,7 @@ func TestStack(t *testing.T) {
 		frames := CallerStack(0, 0)
 		require.NotEmpty(t, frames)
 		f := frames[0]
-		assert.Equal(t, "go.uber.org/fx/internal/fxreflect.TestStack.func1", f.Function)
+		assert.Equal(t, "github.com/openumi/fx/internal/fxreflect.TestStack.func1", f.Function)
 		assert.Contains(t, f.File, "internal/fxreflect/stack_test.go")
 		assert.NotZero(t, f.Line)
 	})
@@ -59,7 +59,7 @@ func TestStack(t *testing.T) {
 
 		require.NotEmpty(t, frames)
 		f := frames[0]
-		assert.Equal(t, "go.uber.org/fx/internal/fxreflect.TestStack.func2", f.Function)
+		assert.Equal(t, "github.com/openumi/fx/internal/fxreflect.TestStack.func2", f.Function)
 		assert.Contains(t, f.File, "internal/fxreflect/stack_test.go")
 		assert.NotZero(t, f.Line)
 	})
@@ -77,7 +77,7 @@ func TestDeepStack(t *testing.T) {
 		require.True(t, len(frames) > 3, "expected at least three frames")
 		for i, name := range []string{"func1.TestDeepStack.func1.1.2", "func1.1", "func1"} {
 			f := frames[i]
-			assert.Equal(t, "go.uber.org/fx/internal/fxreflect.TestDeepStack."+name, f.Function)
+			assert.Equal(t, "github.com/openumi/fx/internal/fxreflect.TestDeepStack."+name, f.Function)
 			assert.Contains(t, f.File, "internal/fxreflect/stack_test.go")
 			assert.NotZero(t, f.Line)
 		}
@@ -97,8 +97,8 @@ func TestStackCallerName(t *testing.T) {
 			desc: "skip Fx components",
 			give: Stack{
 				{
-					Function: "go.uber.org/fx.Foo()",
-					File:     "go.uber.org/fx/foo.go",
+					Function: "github.com/openumi/fx.Foo()",
+					File:     "github.com/openumi/fx/foo.go",
 				},
 				{
 					Function: "foo/bar.Baz()",
@@ -111,7 +111,7 @@ func TestStackCallerName(t *testing.T) {
 			desc: "skip Fx in wrong directory",
 			give: Stack{
 				{
-					Function: "go.uber.org/fx.Foo()",
+					Function: "github.com/openumi/fx.Foo()",
 					File:     "fx/foo.go",
 				},
 				{
@@ -125,7 +125,7 @@ func TestStackCallerName(t *testing.T) {
 			desc: "skip Fx subpackage",
 			give: Stack{
 				{
-					Function: "go.uber.org/fx/internal/fxreflect.Foo()",
+					Function: "github.com/openumi/fx/internal/fxreflect.Foo()",
 					File:     "fx/internal/fxreflect/foo.go",
 				},
 				{
@@ -140,7 +140,7 @@ func TestStackCallerName(t *testing.T) {
 			give: Stack{
 				{
 					Function: "some/thing.Foo()",
-					File:     "go.uber.org/fx/foo_test.go",
+					File:     "github.com/openumi/fx/foo_test.go",
 				},
 			},
 			want: "some/thing.Foo()",
@@ -149,11 +149,11 @@ func TestStackCallerName(t *testing.T) {
 			desc: "don't skip fx prefix",
 			give: Stack{
 				{
-					Function: "go.uber.org/fxfoo.Bar()",
-					File:     "go.uber.org/fxfoo/bar.go",
+					Function: "github.com/openumi/fxfoo.Bar()",
+					File:     "github.com/openumi/fxfoo/bar.go",
 				},
 			},
-			want: "go.uber.org/fxfoo.Bar()",
+			want: "github.com/openumi/fxfoo.Bar()",
 		},
 	}
 

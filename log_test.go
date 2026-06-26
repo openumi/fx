@@ -23,9 +23,9 @@ package fx
 import (
 	"testing"
 
+	"github.com/openumi/fx/fxevent"
+	"github.com/openumi/fx/internal/fxlog"
 	"github.com/stretchr/testify/assert"
-	"go.uber.org/fx/fxevent"
-	"go.uber.org/fx/internal/fxlog"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zaptest"
 	"go.uber.org/zap/zaptest/observer"

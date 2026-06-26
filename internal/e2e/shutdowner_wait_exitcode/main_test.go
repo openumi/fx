@@ -26,9 +26,9 @@ import (
 	"path/filepath"
 	"testing"
 
+	"github.com/openumi/fx/internal/testutil"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"go.uber.org/fx/internal/testutil"
 )
 
 // Hijacks the test binary so that the test can run main() as a subprocess

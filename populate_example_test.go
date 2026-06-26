@@ -24,7 +24,7 @@ import (
 	"context"
 	"fmt"
 
-	"go.uber.org/fx"
+	"github.com/openumi/fx"
 )
 
 func ExamplePopulate() {

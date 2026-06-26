@@ -23,8 +23,8 @@ package fxlog
 import (
 	"testing"
 
+	"github.com/openumi/fx/internal/testutil"
 	"github.com/stretchr/testify/assert"
-	"go.uber.org/fx/internal/testutil"
 	"go.uber.org/goleak"
 )
 

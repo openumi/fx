@@ -59,7 +59,7 @@ var _filter = []ast.Node{
 }
 
 func run(pass *analysis.Pass) (interface{}, error) {
-	fxeventPkg, ok := findPackage(pass.Pkg, "go.uber.org/fx/fxevent")
+	fxeventPkg, ok := findPackage(pass.Pkg, "github.com/openumi/fx/fxevent")
 	if !ok {
 		// If the package doesn't import fxevent, and itself isn't
 		// fxevent, then we don't need to run this pass.

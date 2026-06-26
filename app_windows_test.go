@@ -32,9 +32,9 @@ import (
 	"syscall"
 	"testing"
 
+	"github.com/openumi/fx"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"go.uber.org/fx"
 	"golang.org/x/sys/windows"
 )
 

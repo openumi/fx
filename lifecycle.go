@@ -23,7 +23,7 @@ package fx
 import (
 	"context"
 
-	"go.uber.org/fx/internal/lifecycle"
+	"github.com/openumi/fx/internal/lifecycle"
 )
 
 // A HookFunc is a function that can be used as a [Hook].

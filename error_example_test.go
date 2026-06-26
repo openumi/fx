@@ -26,7 +26,7 @@ import (
 	"net/http"
 	"os"
 
-	"go.uber.org/fx"
+	"github.com/openumi/fx"
 )
 
 func ExampleError() {

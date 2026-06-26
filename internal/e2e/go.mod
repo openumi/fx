@@ -1,10 +1,10 @@
-module go.uber.org/fx/internal/e2e
+module github.com/openumi/fx/internal/e2e
 
 go 1.24
 
 require (
 	github.com/stretchr/testify v1.8.2
-	go.uber.org/fx v1.19.2
+	github.com/openumi/fx v1.19.2
 )
 
 require (
@@ -17,4 +17,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace go.uber.org/fx => ../..
+replace github.com/openumi/fx => ../..

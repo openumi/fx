@@ -30,9 +30,9 @@ import (
 	"sync"
 	"time"
 
-	"go.uber.org/fx/fxevent"
-	"go.uber.org/fx/internal/fxclock"
-	"go.uber.org/fx/internal/fxreflect"
+	"github.com/openumi/fx/fxevent"
+	"github.com/openumi/fx/internal/fxclock"
+	"github.com/openumi/fx/internal/fxreflect"
 	"go.uber.org/multierr"
 )
 

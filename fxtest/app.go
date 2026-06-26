@@ -23,7 +23,7 @@ package fxtest
 import (
 	"context"
 
-	"go.uber.org/fx"
+	"github.com/openumi/fx"
 )
 
 // App is a wrapper around fx.App that provides some testing helpers. By

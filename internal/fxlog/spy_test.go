@@ -24,8 +24,8 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/openumi/fx/fxevent"
 	"github.com/stretchr/testify/assert"
-	"go.uber.org/fx/fxevent"
 )
 
 func TestSpy(t *testing.T) {

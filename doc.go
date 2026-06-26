@@ -39,7 +39,7 @@
 //
 // To test functions that use the Lifecycle type or to write end-to-end tests
 // of your Fx application, use the helper functions and types provided by the
-// go.uber.org/fx/fxtest package.
+// github.com/openumi/fx/fxtest package.
 //
 // # Parameter Structs
 //
@@ -357,4 +357,4 @@
 //		Logger *zap.Logger
 //		mu     sync.Mutex
 //	}
-package fx // import "go.uber.org/fx"
+package fx // import "github.com/openumi/fx"

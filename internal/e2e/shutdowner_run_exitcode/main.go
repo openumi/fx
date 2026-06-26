@@ -21,7 +21,7 @@
 package main
 
 import (
-	"go.uber.org/fx"
+	"github.com/openumi/fx"
 )
 
 func main() {

@@ -26,8 +26,9 @@
 package main
 
 import (
-	"go.uber.org/fx/tools/analysis/passes/allfxevents"
 	"golang.org/x/tools/go/analysis/multichecker"
+
+	"github.com/openumi/fx/tools/analysis/passes/allfxevents"
 )
 
 func main() {

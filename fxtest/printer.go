@@ -21,10 +21,10 @@
 package fxtest
 
 import (
-	"go.uber.org/fx"
-	"go.uber.org/fx/fxevent"
-	"go.uber.org/fx/internal/fxlog"
-	"go.uber.org/fx/internal/testutil"
+	"github.com/openumi/fx"
+	"github.com/openumi/fx/fxevent"
+	"github.com/openumi/fx/internal/fxlog"
+	"github.com/openumi/fx/internal/testutil"
 )
 
 // NewTestLogger returns an fxlog.Logger that logs to the testing TB.

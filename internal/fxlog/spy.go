@@ -24,7 +24,7 @@ import (
 	"reflect"
 	"sync"
 
-	"go.uber.org/fx/fxevent"
+	"github.com/openumi/fx/fxevent"
 )
 
 // Events is a list of events captured by fxlog.Spy.

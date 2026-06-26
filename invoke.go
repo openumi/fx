@@ -24,7 +24,7 @@ import (
 	"fmt"
 	"strings"
 
-	"go.uber.org/fx/internal/fxreflect"
+	"github.com/openumi/fx/internal/fxreflect"
 )
 
 // Invoke registers functions that are executed eagerly on application start.

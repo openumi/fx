@@ -26,11 +26,11 @@ import (
 	"io"
 	"os"
 
-	"go.uber.org/fx"
-	"go.uber.org/fx/internal/fxclock"
-	"go.uber.org/fx/internal/fxlog"
-	"go.uber.org/fx/internal/lifecycle"
-	"go.uber.org/fx/internal/testutil"
+	"github.com/openumi/fx"
+	"github.com/openumi/fx/internal/fxclock"
+	"github.com/openumi/fx/internal/fxlog"
+	"github.com/openumi/fx/internal/lifecycle"
+	"github.com/openumi/fx/internal/testutil"
 )
 
 // If a testing.T is unspecified, degrade to printing to stderr to provide

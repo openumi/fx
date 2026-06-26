@@ -18,7 +18,7 @@ learn more about Fx.
 Use Go modules to install Fx in your application.
 
 ```shell
-go get go.uber.org/fx@v1
+go get github.com/openumi/fx@v1
 ```
 
 ## Getting started

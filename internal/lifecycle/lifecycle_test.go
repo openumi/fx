@@ -29,13 +29,13 @@ import (
 	"testing"
 	"time"
 
+	"github.com/openumi/fx/fxevent"
+	"github.com/openumi/fx/internal/fxclock"
+	"github.com/openumi/fx/internal/fxlog"
+	"github.com/openumi/fx/internal/fxreflect"
+	"github.com/openumi/fx/internal/testutil"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"go.uber.org/fx/fxevent"
-	"go.uber.org/fx/internal/fxclock"
-	"go.uber.org/fx/internal/fxlog"
-	"go.uber.org/fx/internal/fxreflect"
-	"go.uber.org/fx/internal/testutil"
 	"go.uber.org/goleak"
 	"go.uber.org/multierr"
 )

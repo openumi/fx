@@ -25,7 +25,7 @@ import (
 	"reflect"
 	"strings"
 
-	"go.uber.org/fx/internal/fxreflect"
+	"github.com/openumi/fx/internal/fxreflect"
 )
 
 // Replace provides instantiated values for graph modification as if

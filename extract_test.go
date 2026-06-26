@@ -25,8 +25,8 @@ import (
 	"fmt"
 	"testing"
 
-	. "go.uber.org/fx"
-	"go.uber.org/fx/fxtest"
+	. "github.com/openumi/fx"
+	"github.com/openumi/fx/fxtest"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

@@ -25,8 +25,8 @@ import (
 	"errors"
 	"testing"
 
+	"github.com/openumi/fx"
 	"github.com/stretchr/testify/assert"
-	"go.uber.org/fx"
 )
 
 func TestApp(t *testing.T) {

@@ -27,12 +27,12 @@ import (
 	"testing"
 	"time"
 
+	"github.com/openumi/fx"
+	"github.com/openumi/fx/fxevent"
+	"github.com/openumi/fx/fxtest"
+	"github.com/openumi/fx/internal/fxlog"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"go.uber.org/fx"
-	"go.uber.org/fx/fxevent"
-	"go.uber.org/fx/fxtest"
-	"go.uber.org/fx/internal/fxlog"
 	"go.uber.org/zap"
 )
 

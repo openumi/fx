@@ -28,12 +28,12 @@ import (
 	"sync"
 	"testing"
 
+	"github.com/openumi/fx/fxevent"
+	"github.com/openumi/fx/internal/fxclock"
+	"github.com/openumi/fx/internal/fxlog"
+	"github.com/openumi/fx/internal/fxreflect"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"go.uber.org/fx/fxevent"
-	"go.uber.org/fx/internal/fxclock"
-	"go.uber.org/fx/internal/fxlog"
-	"go.uber.org/fx/internal/fxreflect"
 )
 
 func TestAppRun(t *testing.T) {

@@ -3,7 +3,7 @@ package a
 import (
 	"fmt"
 
-	"go.uber.org/fx/fxevent"
+	"github.com/openumi/fx/fxevent"
 )
 
 type fullLogger struct{}

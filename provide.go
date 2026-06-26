@@ -25,8 +25,8 @@ import (
 	"reflect"
 	"strings"
 
+	"github.com/openumi/fx/internal/fxreflect"
 	"go.uber.org/dig"
-	"go.uber.org/fx/internal/fxreflect"
 )
 
 // Provide registers any number of constructor functions, teaching the

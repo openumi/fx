@@ -1,4 +1,4 @@
-module go.uber.org/fx
+module github.com/openumi/fx
 
 go 1.24
 
