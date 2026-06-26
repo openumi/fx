@@ -20,7 +20,7 @@
 
 package fx
 
-import "go.uber.org/dig"
+import "github.com/openumi/dig"
 
 // In can be embedded into a struct to mark it as a parameter struct.
 // This allows it to make use of advanced dependency injection features.

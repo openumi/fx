@@ -28,9 +28,9 @@ import (
 	. "github.com/openumi/fx"
 	"github.com/openumi/fx/fxtest"
 
+	"github.com/openumi/dig"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"go.uber.org/dig"
 )
 
 func TestExtract(t *testing.T) {

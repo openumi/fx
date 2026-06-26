@@ -27,8 +27,8 @@ import (
 	"reflect"
 	"strings"
 
+	"github.com/openumi/dig"
 	"github.com/openumi/fx/internal/fxreflect"
-	"go.uber.org/dig"
 )
 
 // Annotated annotates a constructor provided to Fx with additional options.

@@ -3,8 +3,8 @@ module github.com/openumi/fx
 go 1.24
 
 require (
+	github.com/openumi/dig v0.0.0-20260626221247-577506b0ee4c
 	github.com/stretchr/testify v1.8.1
-	go.uber.org/dig v1.19.0
 	go.uber.org/goleak v1.2.0
 	go.uber.org/multierr v1.10.0
 	go.uber.org/zap v1.26.0

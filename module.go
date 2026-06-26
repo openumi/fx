@@ -23,9 +23,9 @@ package fx
 import (
 	"fmt"
 
+	"github.com/openumi/dig"
 	"github.com/openumi/fx/fxevent"
 	"github.com/openumi/fx/internal/fxreflect"
-	"go.uber.org/dig"
 	"go.uber.org/multierr"
 )
 

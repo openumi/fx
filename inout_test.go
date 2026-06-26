@@ -23,10 +23,10 @@ package fx_test
 import (
 	"testing"
 
+	"github.com/openumi/dig"
 	"github.com/openumi/fx"
 	"github.com/openumi/fx/fxtest"
 	"github.com/stretchr/testify/assert"
-	"go.uber.org/dig"
 )
 
 func TestIn(t *testing.T) {

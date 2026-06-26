@@ -30,12 +30,12 @@ import (
 	"strings"
 	"time"
 
+	"github.com/openumi/dig"
 	"github.com/openumi/fx/fxevent"
 	"github.com/openumi/fx/internal/fxclock"
 	"github.com/openumi/fx/internal/fxlog"
 	"github.com/openumi/fx/internal/fxreflect"
 	"github.com/openumi/fx/internal/lifecycle"
-	"go.uber.org/dig"
 	"go.uber.org/multierr"
 )
 

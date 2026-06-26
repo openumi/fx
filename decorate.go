@@ -25,8 +25,8 @@ import (
 	"reflect"
 	"strings"
 
+	"github.com/openumi/dig"
 	"github.com/openumi/fx/internal/fxreflect"
-	"go.uber.org/dig"
 )
 
 // Decorate specifies one or more decorator functions to an Fx application.
